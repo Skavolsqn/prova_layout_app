@@ -36,7 +36,10 @@ class TelaDashboard extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // Desafio 2: crossAxisAlignment controla o alinhamento no eixo
+          // transversal (horizontal, já que é uma Column). Alterado de .start
+          // para .center para centralizar os filhos horizontalmente.
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
               'Resumo das Observações',

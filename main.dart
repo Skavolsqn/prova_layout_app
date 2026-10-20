@@ -158,6 +158,36 @@ class TelaDashboard extends StatelessWidget {
             ),
 
             const SizedBox(height: 24.0),
+
+            // Desafio 3: seção "Últimos Registros" dentro de um Container.
+            // A Row usa MainAxisAlignment.spaceBetween: o primeiro filho (ícone
+            // de lista + texto) fica na ponta esquerda e o último (ícone de
+            // seta) na ponta direita, com o espaço livre distribuído no meio.
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                color: Colors.teal.shade50,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.teal.shade200),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Row(
+                    children: [
+                      Icon(Icons.list, color: Colors.teal),
+                      SizedBox(width: 8),
+                      Text(
+                        'Últimos Registros',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16, color: Colors.teal),
+                ],
+              ),
+            ),
           ],
         ),
       ),

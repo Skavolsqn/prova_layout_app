@@ -83,6 +83,55 @@ class TelaDashboard extends StatelessWidget {
             const SizedBox(height: 24.0),
 
             const Text(
+              'Resumo em Grade',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16.0),
+
+            // Desafio 8: layout em grade 2x2 com GridView.count.
+            // crossAxisCount: 2 define as 2 colunas (4 itens = 2 linhas).
+            // shrinkWrap e NeverScrollableScrollPhysics permitem usar a grade
+            // dentro da Column/SingleChildScrollView sem erro de altura.
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12.0,
+                mainAxisSpacing: 12.0,
+                childAspectRatio: 1.3,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  BlocoEstatistica(
+                    icone: Icons.flutter_dash,
+                    valor: '124',
+                    rotulo: 'Aves Vistas',
+                    corFundo: Colors.teal.shade100,
+                  ),
+                  BlocoEstatistica(
+                    icone: Icons.place,
+                    valor: '18',
+                    rotulo: 'Locais Visitados',
+                    corFundo: Colors.teal.shade50,
+                  ),
+                  BlocoEstatistica(
+                    icone: Icons.camera_alt,
+                    valor: '45',
+                    rotulo: 'Fotos',
+                    corFundo: Colors.teal.shade200,
+                  ),
+                  BlocoEstatistica(
+                    icone: Icons.calendar_today,
+                    valor: '32',
+                    rotulo: 'Dias de Campo',
+                    corFundo: Colors.teal.shade100,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24.0),
+
+            const Text(
               'Destaque da Semana',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),

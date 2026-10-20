@@ -36,9 +36,7 @@ class TelaDashboard extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          // Desafio 2: crossAxisAlignment controla o alinhamento no eixo
-          // transversal (horizontal, já que é uma Column). Alterado de .start
-          // para .center para centralizar os filhos horizontalmente.
+          // Desafio 2: crossAxisAlignment alterado de .start para .center
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
@@ -159,10 +157,8 @@ class TelaDashboard extends StatelessWidget {
 
             const SizedBox(height: 24.0),
 
-            // Desafio 3: seção "Últimos Registros" dentro de um Container.
-            // A Row usa MainAxisAlignment.spaceBetween: o primeiro filho (ícone
-            // de lista + texto) fica na ponta esquerda e o último (ícone de
-            // seta) na ponta direita, com o espaço livre distribuído no meio.
+            // Desafio 3: seção "Últimos Registros" com Row e
+            // MainAxisAlignment.spaceBetween
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
@@ -187,6 +183,35 @@ class TelaDashboard extends StatelessWidget {
                   Icon(Icons.arrow_forward_ios, size: 16, color: Colors.teal),
                 ],
               ),
+            ),
+            const SizedBox(height: 24.0),
+
+            // Desafio 4: erro de overflow (RenderFlex overflow).
+            // Código que causa o erro (comentado):
+            // Row(
+            //   children: const [
+            //     Icon(Icons.info, color: Colors.teal),
+            //     SizedBox(width: 8),
+            //     Text(
+            //       'Este é um texto de observação muito longo que não cabe '
+            //       'na largura da tela e causa overflow na Row',
+            //     ),
+            //   ],
+            // ),
+            // Correção: Text envolvido em Expanded.
+            Row(
+              children: const [
+                Icon(Icons.info, color: Colors.teal),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Este é um texto de observação muito longo que não cabe '
+                    'na largura da tela e causa overflow na Row',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
